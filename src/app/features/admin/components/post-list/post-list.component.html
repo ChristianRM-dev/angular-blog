@@ -1,0 +1,15 @@
+@if (posts$ | async; as posts) {
+  <button mat-raised-button color="accent" [routerLink]="['/admin/post/create']">
+    Create New Post
+  </button>
+    <app-generic-table
+    [data]="posts"
+    [columns]="tableColumns"
+    [actions]="tableActions"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    (action)="handleAction($event)"
+  ></app-generic-table>
+}@else {
+    <p>loading...</p>
+}

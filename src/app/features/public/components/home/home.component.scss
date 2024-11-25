@@ -1,0 +1,10 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  app-post-item {
+    flex: 0 0 calc(50% - 16px); /* Each item takes 50% width minus the gap */
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+    padding: 20px;
+  }
+}

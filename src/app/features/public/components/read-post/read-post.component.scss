@@ -1,0 +1,49 @@
+main{
+  
+  width: 100%;
+ 
+
+  .post-detail-container {
+    width: 100%; /* Ensure the container spans 100% */
+    padding: 0;  /* Optional: Remove padding if needed */
+    margin: 0;   /* Optional: Remove margin if needed */
+  }
+  
+  .post-detail-card {
+    width: 100%; /* Make the mat-card span 100% of its container */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+  
+
+  
+  .post-header {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .post-header:hover {
+    opacity: 0.8;
+  }
+  
+  .header-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+  }
+  
+  mat-card-content {
+    padding: 20px;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+}

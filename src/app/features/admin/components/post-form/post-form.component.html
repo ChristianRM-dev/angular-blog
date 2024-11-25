@@ -1,0 +1,65 @@
+<mat-card class="post-form-card">
+  <h1 mat-card-title>{{ isEditMode ? 'Edit Post' : 'Create Post' }}</h1>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <!-- Title -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter the title" />
+      <mat-error *ngIf="postForm.get('title')?.hasError('required')">Title is required</mat-error>
+      <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')">
+        Title must be less than 100 characters
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Body -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Body</mat-label>
+      <textarea
+        matInput
+        formControlName="body"
+        placeholder="Enter the body content"
+        rows="4"
+      ></textarea>
+      <mat-error *ngIf="postForm.get('body')?.hasError('required')">Body is required</mat-error>
+    </mat-form-field>
+
+    <!-- Author -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" placeholder="Enter the author name" />
+      <mat-error *ngIf="postForm.get('author')?.hasError('required')">Author is required</mat-error>
+    </mat-form-field>
+
+    <!-- Header Image URL -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Header Image URL</mat-label>
+      <input matInput formControlName="headerImageUrl" placeholder="Enter the image URL" />
+      <mat-error *ngIf="postForm.get('headerImageUrl')?.hasError('required')">
+        URL is required
+      </mat-error>
+      <mat-error *ngIf="postForm.get('headerImageUrl')?.hasError('pattern')">Enter a valid URL</mat-error>
+    </mat-form-field>
+
+    <!-- Date -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="postForm.get('date')?.hasError('required')">Date is required</mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="postForm.invalid"
+      >
+        {{ isEditMode ? 'Update Post' : 'Create Post' }}
+      </button>
+    </div>
+  </form>
+</mat-card>
